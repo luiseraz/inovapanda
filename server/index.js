@@ -61,7 +61,7 @@ app.use((err, req, res, next) => {
 });
 
 // Conexão com o MongoDB e inicialização do servidor
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://testedomongo:mongodbteste@cluster0.6b2azok.mongodb.net/?retryWrites=true&w=majority";
+const MONGODB_URI = process.env.MONGODB_URI || "";
 
 // String de conexão local como fallback
 const MONGODB_LOCAL = "mongodb://localhost:27017/inovapanda";
