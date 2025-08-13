@@ -10,7 +10,7 @@ const HomePage = () => {
       name: 'Smartphone XTech Pro',
       price: 2499.99,
       oldPrice: 2999.99,
-      image: '/placeholder.png',
+      image: 'https://via.placeholder.com/300x200/3B82F6/FFFFFF?text=Smartphone',
       rating: 4.8,
       reviewCount: 124
     },
@@ -19,7 +19,7 @@ const HomePage = () => {
       name: 'Fone de Ouvido Wireless',
       price: 299.99,
       oldPrice: 399.99,
-      image: '/placeholder.png',
+      image: 'https://via.placeholder.com/300x200/10B981/FFFFFF?text=Fone+Wireless',
       rating: 4.6,
       reviewCount: 89
     },
@@ -28,7 +28,7 @@ const HomePage = () => {
       name: 'Smart Watch Series 5',
       price: 899.99,
       oldPrice: 1099.99,
-      image: '/placeholder.png',
+      image: 'https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Smart+Watch',
       rating: 4.5,
       reviewCount: 56
     },
@@ -37,7 +37,7 @@ const HomePage = () => {
       name: 'Tablet Ultra Slim',
       price: 1299.99,
       oldPrice: 1499.99,
-      image: '/placeholder.png',
+      image: 'https://via.placeholder.com/300x200/F59E0B/FFFFFF?text=Tablet',
       rating: 4.7,
       reviewCount: 42
     }
@@ -45,30 +45,37 @@ const HomePage = () => {
   
   // Categorias (em um app real, viriam da API)
   const categories = [
-    { id: 1, name: 'Smartphones', image: '/placeholder.png', count: 24 },
-    { id: 2, name: 'Notebooks', image: '/placeholder.png', count: 18 },
-    { id: 3, name: 'Tablets', image: '/placeholder.png', count: 12 },
-    { id: 4, name: 'Smartwatches', image: '/placeholder.png', count: 15 },
-    { id: 5, name: 'Acessórios', image: '/placeholder.png', count: 36 },
-    { id: 6, name: 'Audio', image: '/placeholder.png', count: 28 }
+    { id: 1, name: 'Smartphones', image: 'https://via.placeholder.com/200x150/3B82F6/FFFFFF?text=📱', count: 24 },
+    { id: 2, name: 'Notebooks', image: 'https://via.placeholder.com/200x150/10B981/FFFFFF?text=💻', count: 18 },
+    { id: 3, name: 'Tablets', image: 'https://via.placeholder.com/200x150/8B5CF6/FFFFFF?text=📱', count: 12 },
+    { id: 4, name: 'Smartwatches', image: 'https://via.placeholder.com/200x150/F59E0B/FFFFFF?text=⌚', count: 15 },
+    { id: 5, name: 'Acessórios', image: 'https://via.placeholder.com/200x150/EF4444/FFFFFF?text=🔌', count: 36 },
+    { id: 6, name: 'Audio', image: 'https://via.placeholder.com/200x150/06B6D4/FFFFFF?text=🎧', count: 28 }
   ];
   
   return (
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="relative">
-        <div className="bg-gray-100 rounded-lg overflow-hidden">
-          <div className="container-custom mx-auto px-4 sm:px-6 py-16">
+        <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-lg overflow-hidden relative">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}></div>
+          </div>
+          
+          <div className="container-custom mx-auto px-4 sm:px-6 py-16 relative z-10">
             <div className="max-w-xl">
-              <h1 className="text-4xl sm:text-5xl font-bold mb-4">
+              <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">
                 Tecnologia de ponta para sua vida
               </h1>
-              <p className="text-gray-600 text-lg mb-8">
+              <p className="text-green-100 text-lg mb-8">
                 Descubra os gadgets mais inovadores com até 30% de desconto e frete grátis para todo o Brasil
               </p>
               <Link 
                 to="/products" 
-                className="bg-green-700 text-white py-3 px-8 rounded-md hover:bg-green-800 transition duration-300 inline-flex items-center"
+                className="bg-white text-green-700 py-3 px-8 rounded-md hover:bg-gray-100 transition duration-300 inline-flex items-center font-semibold"
               >
                 Ver ofertas
                 <FaArrowRight className="ml-2" />
@@ -128,8 +135,15 @@ const HomePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map(product => (
               <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden group">
-                <div className="h-48 bg-gray-100 flex items-center justify-center">
-                  <span className="text-gray-400">Imagem do produto</span>
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/300x200/6B7280/FFFFFF?text=Imagem+do+Produto';
+                    }}
+                  />
                 </div>
                 
                 <div className="p-4">
@@ -190,8 +204,15 @@ const HomePage = () => {
                 to={`/products?category=${category.name}`}
                 className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition duration-300"
               >
-                <div className="h-32 bg-gray-100 flex items-center justify-center">
-                  <span className="text-gray-400">Imagem</span>
+                <div className="h-32 overflow-hidden">
+                  <img 
+                    src={category.image} 
+                    alt={category.name}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/200x150/6B7280/FFFFFF?text=Imagem';
+                    }}
+                  />
                 </div>
                 <div className="p-3 text-center">
                   <h3 className="font-medium">{category.name}</h3>
