@@ -1,4 +1,4 @@
-# InovaPanda · Front‑end de E‑commerce (React)
+# InovaPanda · E‑commerce (React)
 
 Interface moderna com foco em **performance**, **acessibilidade** e um visual **dark** inspirado em tons de bambu 🌿. Construída com **React + React Router**, **Context API** (Auth & Cart) e **CSS puro** com *design tokens*.
 
