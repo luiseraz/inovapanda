@@ -1,158 +1,178 @@
-# InovaPanda – Front-end de E-commerce (React)
+# InovaPanda · Front-end de E-commerce (React)
 
-Interface moderna de e-commerce com foco em performance, acessibilidade e um visual dark inspirado em tons de bambu. O projeto usa React + React Router, Context API para autenticação e carrinho, e CSS puro com design tokens (variáveis CSS) para facilitar o tema.
+Interface moderna de e-commerce com foco em **performance**, **acessibilidade** e um visual **dark** inspirado em tons de bambu 🌿.  
+O front usa **React + React Router**, **Context API** (Auth & Cart) e **CSS puro** com *design tokens*.
 
-# Status: em desenvolvimento.
+<p align="left">
+  <a href="https://react.dev" target="_blank"><img alt="React" src="https://img.shields.io/badge/React-18+-61dafb?logo=react&logoColor=222&labelColor=000"></a>
+  <a href="https://vitejs.dev" target="_blank"><img alt="Vite" src="https://img.shields.io/badge/Vite-5-646cff?logo=vite&logoColor=ffd"></a>
+  <a href="https://reactrouter.com" target="_blank"><img alt="React Router" src="https://img.shields.io/badge/React%20Router-6+-ca4245?logo=reactrouter"></a>
+  <img alt="A11y" src="https://img.shields.io/badge/A11y-Focus%20%26%20prefers--reduced--motion-0f766e">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-10b981">
+</p>
 
-Sumário
+> **Status:** 🚧 Em desenvolvimento
 
-Destaques
+---
 
-Tecnologias
+## 📚 Sumário
 
-Estrutura de pastas
+- [✨ Destaques](#-destaques)
+- [🧰 Tecnologias](#-tecnologias)
+- [📁 Estrutura de pastas](#-estrutura-de-pastas)
+- [🚀 Começando](#-começando)
+- [🔧 Configuração de ambiente](#-configuração-de-ambiente)
+- [📜 Scripts](#-scripts)
+- [🎨 Estilo e Tema](#-estilo-e-tema)
+- [🧭 Rotas](#-rotas)
+- [🧠 Estado e Contextos](#-estado-e-contextos)
+- [♿ Acessibilidade](#-acessibilidade)
+- [🧹 Padrões de código](#-padrões-de-código)
+- [📦 Build e Deploy](#-build-e-deploy)
+- [🗺️ Roadmap](#️-roadmap)
+- [🤝 Como contribuir](#-como-contribuir)
+- [📄 Licença](#-licença)
 
-Começando
+---
 
-Configuração (.env)
+## ✨ Destaques
 
-Scripts
+- 🎛️ **Tema dark** com *design tokens* centralizados em `:root` (cores, raio, sombras, tipografia).
+- 🧭 **Navbar** com wordmark **Inova**(branco)**Panda**(verde) e barra de categorias.
+- 🛒 **Carrinho** com badge de quantidade agregado.
+- 👤 **Menu do usuário** acessível (fecha com *click outside* e `Esc`), *fallback* de iniciais se não houver avatar.
+- 🧩 **Vitrine**: Hero, tiles, mini-banners, cartões de produto e *ribbon*.
+- 🔎 **Busca** integrada à rota de produtos (`/produtos?q=...`).
+- ✨ **Shiny** animado **apenas nos botões** (respeita `prefers-reduced-motion`).
+- ♿ Boas práticas de **A11y** (*aria-*, foco visível, contraste, redução de movimento).
 
-Estilo e Tema
+---
 
-Rotas
+## 🧰 Tecnologias
 
-Estado e Contextos
+- **React 18+**
+- **React Router 6+**
+- **Context API** (Auth e Cart)
+- **Vite** (dev/build/preview)
+- **CSS puro** com variáveis (sem Tailwind/SCSS)
 
-Acessibilidade
+---
 
-Padrões de código
+## 📁 Estrutura de pastas
 
-Build e Deploy
+```tree
+inovapanda/
+├─ client/
+│  ├─ public/
+│  └─ src/
+│     ├─ components/
+│     │  ├─ Navbar.jsx          # Wordmark, busca, categorias, menu do usuário
+│     │  └─ Footer.jsx          # Marca, institucionais e meios de pagamento
+│     ├─ context/
+│     │  ├─ AuthContext.jsx     # login/logout, usuário/role, storage
+│     │  └─ CartContext.jsx     # itens do carrinho e totais
+│     ├─ pages/
+│     │  ├─ HomePage.jsx
+│     │  ├─ ProductsPage.jsx
+│     │  ├─ ProductDetailPage.jsx
+│     │  ├─ CartPage.jsx
+│     │  ├─ LoginPage.jsx / RegisterPage.jsx
+│     │  └─ admin/              # rotas protegidas (role === 'admin')
+│     ├─ styles/
+│     │  └─ global.css          # tokens + estilos globais (este arquivo)
+│     ├─ App.jsx                # definição das rotas
+│     └─ main.jsx               # bootstrap do app
+└─ server/ (opcional nesta stack)
+   ├─ src/ controllers, routes, lib/
+   └─ prisma/ schema.prisma```
 
-Roadmap
-
-Como contribuir
-
-Licença
-
-# Destaques
-
-🌗 Tema dark com tokens (cores, raio de borda, sombras, tipografia) centralizados em :root.
-
-🧭 Navbar com wordmark “InovaPanda” (Inova branco, Panda verde, sem espaço) e barra de categorias.
-
-🛒 Carrinho com badge de quantidade agregado.
-
-👤 User menu acessível (fecha com click outside e Esc), fallback de iniciais quando não há avatar.
-
-🧩 Componentes de vitrine: Hero, tiles, mini-banners, cartões de produto e ribbon.
-
-🔎 Busca integrada à rota de produtos.
-
-✨ Efeito “shiny” apenas em botões (não em textos), respeitando prefers-reduced-motion.
-
-♿️ Boas práticas de A11y: aria-*, foco visível, contraste e redução de movimento.
-
-# Tecnologias
-
-React 18+
-
-React Router (navegação SPA)
-
-Context API (Auth e Cart)
-
-CSS puro com variáveis (sem Tailwind/SCSS)
-
-Tooling recomendado: Vite (dev/build) – funciona também com CRA, mas os comandos abaixo consideram Vite.
-
-# Estrutura de pastas
-´´´src/
-  components/
-    Navbar.jsx         # Wordmark, busca, categorias, menu do usuário
-    Footer.jsx         # Marca, institucionais e meios de pagamento
-    ...                # (demais componentes de vitrine/cartões)
-  context/
-    AuthContext.jsx    # login/logout, usuário/role
-    CartContext.jsx    # itens do carrinho e totais
-  pages/
-    Home.jsx
-    Produtos.jsx
-    Carrinho.jsx
-    Conta/
-      Perfil.jsx
-      Pedidos.jsx
-    Admin/             # apenas se role === 'admin'
-  assets/              # imagens e ícones
-  main.jsx             # bootstrap do app
-  App.jsx              # definição das rotas
-styles/
-  global.css           # **este arquivo** com todos os tokens e estilos´´´
-
-
-Os nomes exatos de páginas podem variar conforme o seu projeto, mas as rotas abaixo são suportadas pela Navbar.
-
-Começando
+# 🚀 Começando (rápido)
 Pré-requisitos
 
-Node.js 18+ (recomendado 20)
+Node.js 18+ (recomendado 20+)
 
-npm 9+ (ou pnpm/yarn, se preferir)
+npm 9+ (ou pnpm / yarn)
 
-Instalação
-# 1) Instale dependências
+1) Clonar
+git clone https://github.com/luiseraz/inovapanda.git
+cd inovapanda
+
+2) Frontend (Vite)
+cd client
 npm install
-
-# 2) Ambiente de desenvolvimento
+cp .env.example .env   # se existir; senão crie .env conforme seção abaixo
 npm run dev
+# http://localhost:5173
 
-# 3) Build de produção
-npm run build
+3) Backend (Express/Prisma) — opcional
+cd ../server
+npm install
+cp .env.example .env   # ou crie conforme seção abaixo
+npx prisma generate
+npx prisma migrate dev --name init
+npm run dev
+# http://localhost:4000
 
-# 4) Pré-visualização do build local
-npm run preview
+🔧 Variáveis de ambiente
+client/.env
+# URL base da API (Express/Nest/Rails/etc.)
+VITE_API_URL=http://localhost:4000
 
-
-Abra o navegador em http://localhost:5173 (porta padrão do Vite).
-
-Configuração (.env)
-
-Crie um arquivo .env na raiz (ou .env.local) com as variáveis que seu back-end expõe. Sugestões usuais:
-
-# URL base da API (ex.: Express, Nest, Rails, etc.)
-VITE_API_URL=https://api.seudominio.com
-
-# Chaves de storage (opcional)
+# Chaves de storage (opcionais)
 VITE_AUTH_STORAGE_KEY=ip_auth
 VITE_CART_STORAGE_KEY=ip_cart
 
 
-No código, acesse com import.meta.env.VITE_API_URL.
+Acessar no código via import.meta.env.VITE_API_URL.
 
-Scripts
+server/.env
+# SQLite (caminho relativo à pasta server/prisma)
+DATABASE_URL="file:./dev.db"
+
+# JWT
+JWT_SECRET="uma_chave_bem_secreta"
+
+# Porta do servidor
+PORT=4000
+
+🗄️ Banco de dados (Prisma/SQLite)
+
+Modelo principal:
+
+User (id, name?, email único, password hash, role user|admin, timestamps)
+
+Product (id, name, slug único, descrição?, price, compareAtPrice?, image?, brand?, category?, stock, timestamps)
+
+Comandos úteis
+# gerar client após alterar schema
+npx prisma generate
+
+# criar/rodar migrações (modo dev)
+npx prisma migrate dev --name <descricao>
+
+# visualizar o banco local
+npx prisma studio
+
+📜 Scripts
+Client (client/)
 Script	Descrição
-dev	Sobe o servidor de desenvolvimento (Vite).
-build	Gera build de produção.
-preview	Serve o build local para inspeção.
+dev	Servidor de desenvolvimento (Vite)
+build	Build de produção (gera dist/)
+preview	Servir o build local para inspeção
+Server (server/)
+Script	Descrição
+dev	Nodemon (desenvolvimento)
+start	Node (produção)
+prisma:*	Comandos de geração/migração (vide acima)
+🎨 Estilo e tema
 
-Se você estiver usando CRA, substitua por react-scripts start/build.
+Tokens no :root (global.css): --bg, --panel, --brand, --accent, --radius, --shadow, --fs-hero, etc.
 
-Estilo e Tema
-
-Toda a identidade visual vive em styles/global.css:
-
-Tokens em :root
---bg, --panel, --brand, --accent, --radius, --shadow, tamanhos de fonte etc.
-
-Wordmark “InovaPanda”
-O HTML usa algo como:
+Wordmark “InovaPanda”: HTML com Inova (branco) + Panda (verde, sem espaço)
 
 <Link className="brand wordmark" to="/" aria-label="Início InovaPanda">
   Inova<span>Panda</span>
 </Link>
-
-
-No CSS:
 
 .brand.wordmark,
 .brand.wordmark:visited { color: var(--text) !important; }
@@ -161,113 +181,141 @@ No CSS:
 .brand.wordmark:hover { text-decoration: none !important; }
 
 
-Shiny APENAS em botões
-O brilho é um ::after com animação controlada por --shine-speed:
+Efeito “shiny” somente em botões
+Implementado com ::after animado e variável --shine-speed (padrão 3.2s).
+Respeita @media (prefers-reduced-motion: reduce).
 
-:root { --shine-speed: 3.2s; }
-.btn::after { /* overlay animado */ }
-@media (prefers-reduced-motion: reduce) { .btn::after { animation: none; } }
+🧭 Rotas de frontend
 
+/ — Home
 
-Para acelerar/desacelerar, altere --shine-speed no :root.
+/produtos — Lista (aceita ?q= e ?category=)
 
-Rotas
+/produto/:slug — Detalhe do produto
 
-A Navbar já aponta para as principais rotas:
-
-/ – Home
-
-/produtos – Lista de produtos (aceita ?q= e ?category= na URL)
-
-/carrinho – Carrinho
+/carrinho — Carrinho
 
 /login e /registrar
 
-/conta/perfil e /conta/pedidos (área do usuário)
+/conta/perfil e /conta/pedidos — Área do usuário
 
-/admin – visível apenas se user.role === 'admin'
+/admin — Apenas se user.role === 'admin' (via AdminGuard)
 
-Ajuste o App.jsx conforme sua necessidade.
-
-Estado e Contextos
+🔐 Autenticação & Carrinho
 
 AuthContext
 
 expõe { user, isAuth, login, logout }
 
-o menu do usuário mostra avatar ou as iniciais via initialsOf(nameOrEmail).
+Menu do usuário mostra avatar ou iniciais (initialsOf(nameOrEmail)).
 
 CartContext
 
 expõe { items, addItem, removeItem, clear, ... }
 
-a Navbar soma as quantidades:
-const totalQty = useMemo(() => items.reduce((s, i) => s + (i.qty || 1), 0), [items]);
+Total na navbar:
 
-Persistência em localStorage é recomendada (chaves sugeridas na seção .env).
+const totalQty = useMemo(
+  () => items.reduce((s, i) => s + (i.qty || 1), 0),
+  [items]
+);
 
-Acessibilidade
 
-User dropdown fecha com clique fora e tecla Esc.
+Recomenda-se persistência em localStorage (use as chaves do .env).
 
-Inputs e botões com foco visível.
+🧩 Componentes principais
 
-prefers-reduced-motion respeitado no brilho dos botões.
+Navbar: marca + busca + categorias + carrinho + usuário
 
-aria-label e funções semânticas usadas nas áreas de navegação e busca.
+Footer: marca, institucionais, atendimento e badges de pagamento
 
-Imagens com alt (ou fallbacks quando ausentes).
+Hero / Banners / Tiles: destaque de campanhas e categorias
 
-Padrões de código
+Card de produto: imagem, preço atual, preço de comparação, ribbon “Destaque”
 
-Componentes funcionais com hooks.
+♿ Acessibilidade
 
-Semântica: usar tags semânticas (nav, main, etc.) quando possível.
+Dropdown do usuário fecha com clique fora e tecla Esc
 
-CSS organizado por seções (tokens → layout → componentes → utilitários → responsivo).
+Foco visível em inputs e botões
 
-Evite estilos inline quando puder reaproveitar classes.
+prefers-reduced-motion honrado nas animações de brilho
 
-Build e Deploy
+Uso de aria-label e semântica nas áreas de navegação e busca
+
+Imagens com alt (ou fallbacks)
+
+🧹 Padrões de código
+
+Componentes funcionais com Hooks
+
+Semântica HTML (nav, main, etc.)
+
+CSS organizado por seções (tokens → layout → componentes → util → responsivo)
+
+Evitar estilos inline quando puder reaproveitar classes
+
+🧪 Testes (sugestão)
+
+Unitários: Vitest + React Testing Library
+
+E2E: Playwright ou Cypress
+
+🚢 Build & Deploy
 Vercel / Netlify
 
-Build command: npm run build
+Client
 
-Output directory: dist
+Build: npm run build
 
-Configure as variáveis de ambiente (VITE_API_URL, etc.) no painel do provedor.
+Output: dist/
 
-GitHub Pages (opcional)
+Variáveis: VITE_API_URL, etc.
 
-Use um action que rode npm ci && npm run build e publique dist (com gh-pages ou ação nativa).
+Server: configure como app Node (separe o deploy do backend)
 
-Roadmap
+GitHub Pages (client)
 
- Integração real com API (produtos, carrinho, checkout).
+Action que rode npm ci && npm run build e publique client/dist/
+(com gh-pages ou ação nativa)
 
- Persistência completa de Auth/Cart em localStorage.
+🌿 Roadmap
 
- Página de detalhes de produto.
+ Integração real com API (produtos, carrinho, checkout)
 
- Testes unitários (Vitest/RTL) e2e (Playwright).
+ Persistência completa de Auth/Cart em localStorage
 
- Tema claro (alternável) reaproveitando os tokens.
+ Página de detalhes de produto aprimorada
 
-Como contribuir
+ Testes unitários (Vitest/RTL) e E2E (Playwright)
 
-Faça um fork do repositório.
+ Tema claro (toggle) reaproveitando tokens
 
-Crie sua branch: git checkout -b feat/minha-feature.
+🤝 Contribuindo
 
-Faça commits descritivos.
+Faça um fork do repositório
 
-Abra um PR explicando a motivação e screenshots quando possível.
+Crie a branch: git checkout -b feat/minha-feature
 
-Licença
+Faça commits descritivos
 
-Este projeto está licenciado sob a MIT License.
-Você pode adaptar a licença conforme a política da sua organização.
+Abra um PR com motivação e screenshots quando possível
 
-Suporte
+🔧 Dicas Git (erros comuns)
 
-Achou um bug ou tem sugestão? Abra uma issue ou mande um PR. 💚
+“rejected: fetch first” ao git push
+O remoto tem commits que você não tem localmente:
+
+git pull --rebase origin main   # traz e rebaseia
+git push -u origin main
+
+
+Se preferir merge:
+
+git pull origin main
+git push -u origin main
+
+📄 Licença
+
+Este projeto está sob a MIT License.
+Sinta-se livre para adaptar conforme a política da sua organização.
