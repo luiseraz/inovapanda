@@ -84,7 +84,8 @@ inovapanda/
 │     └─ main.jsx               # bootstrap do app
 └─ server/ (opcional nesta stack)
    ├─ src/ controllers, routes, lib/
-   └─ prisma/ schema.prisma```
+   └─ prisma/ schema.prisma
+```
 
 # 🚀 Começando (rápido)
 Pré-requisitos
